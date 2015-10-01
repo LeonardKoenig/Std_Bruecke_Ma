@@ -1,0 +1,103 @@
+\documentclass[10pt,a4paper]{article}
+\usepackage[utf8]{inputenc}
+\usepackage[ngerman]{babel}
+\usepackage{amsmath}
+\usepackage{amsfonts}
+\usepackage{amssymb}
+\usepackage{amsthm} % for proof-environment
+\usepackage{bm} % for better \boldsymbol
+\usepackage[left=2cm,right=2cm,top=2cm,bottom=2cm]{geometry}
+\author{Leonard K\"onig}
+\title{Beweis zu Aufgabe}
+\date{2015-10-01}
+%
+\newtheorem*{beh}{Behauptung}
+%
+\begin{document}
+\begin{beh}
+\begin{align*}
+x \wedge y \wedge z \equiv
+& \left(x \rightarrow y \wedge z\right) \wedge \\
+& \left(y \rightarrow x \wedge z\right) \wedge \\
+& \left(z \rightarrow x \wedge y\right) \wedge \\
+& \left(x \vee y \vee z \right)
+\end{align*}
+\end{beh}
+%
+%
+\begin{proof}
+\begin{align}
+& \left(x \rightarrow y \wedge z\right) \wedge \notag\\
+& \left(y \rightarrow x \wedge z\right) \wedge \notag\\
+& \left(z \rightarrow x \wedge y\right) \wedge \notag\\
+& \left(x \vee y \vee z \right) && \mid\text{ \glqq Verteilen\grqq\ vom \glq}\rightarrow\text{\grq}\\
+\equiv
+%
+& \left(x \rightarrow y\right) \wedge \bm{\left(x \rightarrow z\right)} \wedge \notag\\
+& \bm{\left(y \rightarrow x\right)} \wedge \left(y \rightarrow z\right) \wedge \notag\\
+& \left(z \rightarrow x\right) \wedge  \bm{\left(z \rightarrow y\right)} \wedge \notag\\
+& \left(x \vee y \vee z \right) && \mid\text{ Redundanzen tilgen}\\
+\equiv
+%
+& \left(x  \bm{\rightarrow} y\right) \wedge
+\left(y  \bm{\rightarrow} z\right) \wedge
+\left(z  \bm{\rightarrow} x\right) \wedge \notag\\
+& \left(x \vee y \vee z \right) && \mid\text{ \glq}\rightarrow\text{\grq\ ersetzen}\\
+\equiv
+%
+& \left(\neg x \vee y\right) \wedge
+\left(\neg y \vee z\right) \wedge
+\left(\neg z \vee x\right) \wedge \notag\\
+& \left(x \vee y \vee z\right) && \mid\text{ Distribuieren}\\
+\equiv
+%
+%
+& (\left(\neg x \vee y\right) \wedge \left(\neg y \vee z\right) \wedge  \bm{\left(\neg z \vee x\right)} \wedge \bm{x}) \vee \notag\\
+& ( \bm{\left(\neg x \vee y\right)} \wedge \left(\neg y \vee z\right) \wedge \left(\neg z \vee x\right) \wedge  \bm{y}) \vee \notag\\
+& (\left(\neg x \vee y\right) \wedge  \bm{\left(\neg y \vee z\right)} \wedge \left(\neg z \vee x\right) \wedge \bm{z}) && \mid\text{ Absorption}\\
+\equiv
+%
+& ( \bm{\left(\neg x \vee y\right)} \wedge \left(\neg y \vee z\right) \wedge  \bm{x}) \vee \notag\\
+& ( \bm{\left(\neg y \vee z\right)} \wedge \left(\neg z \vee x\right) \wedge  \bm{y}) \vee \notag\\
+& (\left(\neg x \vee y\right) \wedge  \bm{\left(\neg z \vee x\right)} \wedge  \bm{z})
+ && \mid\text{ Distribuieren}\\
+\equiv
+%
+& [ (\bm{\left(\neg x \wedge x\right)} \vee \left(y \wedge x\right)) \wedge \left(\neg y \vee z\right)] \vee \notag\\
+& [ (\bm{\left(\neg y \wedge y\right)} \vee \left(y \wedge z\right)) \wedge \left(\neg z \vee x\right)] \vee \notag\\
+& [ (\bm{\left(\neg z \wedge z\right)} \vee \left(z \wedge x\right)) \wedge \left(\neg x \vee y\right)] && \mid\text{ Komplementarit\"at \& Neutralit\"at}\\
+\equiv
+%
+& [\left(y \wedge x\right)) \wedge \left(\neg y \vee z\right)] \vee \notag\\
+& [\left(y \wedge z\right)) \wedge \left(\neg z \vee x\right)] \vee \notag\\
+& [\left(z \wedge x\right)) \wedge \left(\neg x \vee y\right)]
+ && \mid\text{ Distribuieren}\\
+\equiv
+%
+& [\left( \bm{\left(}y \wedge x \bm{\right)} \wedge \neg y) \vee ( \bm{\left(}y \wedge x \bm{\right)} \wedge z\right)] \vee \notag\\
+& [\left( \bm{\left(}y \wedge z \bm{\right)} \wedge \neg z) \vee ( \bm{\left(}y \wedge z \bm{\right)} \wedge x\right)] \vee \notag\\
+& [\left( \bm{\left(}z \wedge x \bm{\right)} \wedge \neg x) \vee ( \bm{\left(}z \wedge x \bm{\right)} \wedge y\right)]
+ && \mid\text{ Assoziativit\"at}\\
+\equiv
+%
+& [\left( \bm{y \wedge} x \wedge  \bm{\neg y}) \vee (y \wedge x \wedge z\right)] \vee \notag\\
+& [\left(y \wedge  \bm{z \wedge \neg z}) \vee (y \wedge z \wedge x\right)] \vee \notag\\
+& [\left(z \wedge  \bm{x \wedge \neg x}) \vee (z \wedge x \wedge y\right)]
+ && \mid\text{ Komplementarit\"at \& Dominanz}\\
+\equiv
+%
+& [\left(0) \vee (y \wedge x \wedge z\right)] \vee \notag\\
+& [\left(0) \vee (y \wedge z \wedge x\right)] \vee \notag\\
+& [\left(0) \vee (z \wedge x \wedge y\right)] && \mid\text{ Neutralit\"at}\\
+\equiv
+%
+& \left(y \wedge x \wedge z\right) \vee
+\left(y \wedge z \wedge x\right) \vee
+\left(z \wedge x \wedge y\right) \vee && \mid\text{ Redundanz}\\
+\equiv 
+%
+& z \wedge x \wedge y && \qedhere
+\end{align}
+\end{proof}
+\pagenumbering{gobble}
+\end{document}
