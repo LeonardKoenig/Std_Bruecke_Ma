@@ -1,0 +1,216 @@
+\documentclass[10pt,a4paper]{article}
+\usepackage[utf8]{inputenc}
+\usepackage[ngerman]{babel}
+\usepackage{amsmath}
+\usepackage{amsfonts}
+\usepackage{amssymb}
+\usepackage{amsthm} % theorems
+\usepackage{cancel} % strikethrough
+\usepackage{tabto} % tabbing
+%\usepackage[left=2cm,right=2cm,top=2cm,bottom=2cm]{geometry}
+\author{Leonard König}
+\title{Mathe-Bruecke_d1}
+\date{2015-09-29}
+\begin{document}
+\section{Aussagenlogik}
+Aussage: (formalsprachliches) Gebilde (Satz) mit der Eigenschaft entweder wahr oder falsch zu sein.
+%
+\begin{itemize}
+\item Zweiwertigkeitsprinzip
+\item Extentionalitätsprinizip (Wahrheitswert einer zusammengesetzten Aussage ergibt sich aus denen der einzelnen Aussagen)
+\end{itemize}
+%
+\subsection{Konkatinieren von Aussagen:}
+\begin{itemize}
+\item Negation (\( \neg \)) \tab{(unär)}
+\item Konjunktion (\( \land \)) \tab{(binär)}
+\item Disjunktion (\( \lor \)) \tab{(binär)}
+\item Implikation (\( \rightarrow \)) \tab{(binär)}
+\item Äquivalenz (\( \leftrightarrow \)) \tab{(binär)}
+\item ( Antivalenz (\( \oplus \)) ) \tab{(binär)}
+\end{itemize}
+%
+\subsection{Beispiele und Anwendung}
+%
+Werte für eine Aussage sind wahr (\( w,t,1 \)) und falsch (\( f,0 \)).
+%
+\subsubsection{Beispiele für Aussagen}
+\begin{itemize}
+\item \glqq $7$ ist prim\grqq\tab{$1$}
+\item \glqq $9$ ist prim\grqq\tab{$0$}
+\item \glqq $10$ ist gerade\grqq\tab{$1$}
+\item \glqq $7$ ist prim\grqq\tab{$1$}
+\item \glqq $7$ ist prim $\lor$ $7$ ist ungerade\grqq\tab{$1$}
+\item \glqq $7$ ist prim $\oplus$ $7$ ist ungerade\grqq\tab{$0$}
+\item \glqq $\sqrt{2}$ ist rational\grqq\tab{$0$}
+\item \glqq Jede gerade Zahl $n\geq 4$\\
+kann als Summe von zwei Primzahlen\\
+dargestellt werden\grqq\tab{? (Goldbachsche Vermutung)}
+\end{itemize}
+%
+Es muss also \emph{nicht} klar sein, ob die Aussage wahr oder falsch ist!
+%
+\subsection{Keine Aussagen}
+\begin{itemize}
+\item \glqq $x:$ $x$ ist falsch\grqq\tab{Paradoxon}
+\item \glqq $n$ ist prim\grqq\tab{Ein Prädikat. Siehe spätere Vorlesungen}
+\end{itemize}
+%
+\textbf{WAHRHEITSTAFEL EINFUEGEN}
+%TODO
+\subsection{Syntaktische und Semantische Korrektheit}
+\begin{itemize}
+\item \( x + - y \)\tab{syntaktisch inkorrekt}
+\item \( \frac{x}{y} \)\tab{syntaktisch korrekt \& semantisch korrekt für \( y \neq 0 \)}
+\end{itemize}
+%
+\subsection{Definition}
+\newtheorem{defi}{Definition}
+\begin{defi}[Term der Aussagenlogik]
+Gegeben Variablenmenge $V = \{ x,y,z,x_1,x_2, ...\} $
+\begin{enumerate}
+\item Jede Variable in $V$ und $0,1$ sind \glq Terme\grq\ bzw. Formeln der Aussagenlogik
+\item falls $t$ ein Term, dann ist auch ($\neg t$) ein Term\tab{$\mid$ erhöht Rang um 1}
+\item sind $s,t$ Terme der Aussagenlogik, \\
+dann sind auch $(s \land t)$, $(s \lor t)$, $(s\rightarrow t)$, $(s\leftrightarrow t)$ \\
+Terme der Aussagenlogik\tab{$\mid$ neuer Rang: Maximum der beiden \glq Subränge\grq\ $+1$}
+\item Alle Terme der Aussagenlogik lassen sich wie beschrieben bilden.
+\end{enumerate}
+\end{defi}
+%
+Anmerkungen
+\begin{itemize}
+\item Wenn wir nur $\neg$, $\land$, $\lor$ verwenden, erzeugen wir die sogenannten \glq Booleschen Terme\grq
+\item In der Aussagenlogik sind \glq Term\grq\ und \glq Formel\grq\ synonym.
+\item Um auf \emph{Gleichheit} (beachte: \emph{nicht} Äquivalenz!) zu prüfen, können wir den Syntaxbaum nutzen (siehe Abb. ???)
+%TODO Abbildungsreferenz
+\\ \textbf{SYNTAXBAUM EINFUEGEN}
+%TODO
+\item Bindungsstärke (zur Klammersetzung):
+\begin{itemize}
+\item äußere Klammern kann man weglassen
+\item Bindungsstärke nimmt in dieser Reihenfolge ab: \\
+$(\neg)$, $(\land,\lor)$, $(\rightarrow, \leftrightarrow)$
+\end{itemize}
+\item Auch bei Assoziativität \emph{ändern} sich die Formeln, sind aber äquivalent!
+\end{itemize}
+\subsection{Semantik der Aussagenlogik}
+%
+Semantik ist die Interpretation der Formeln:
+\begin{itemize}
+\item Belegung mit Wahrheitswerten
+\item Auswertung der Formel\\
+Boolesche Funktion: Auswertung unter allen möglichen Belegungen
+\end{itemize}
+Analogie zu Programmen:
+\begin{itemize}
+\item \textbf{syntaktisch korrekt} heißt, dass Lexer und Parser fehlerfrei den Term / die Formel fehlerfrei analysieren können, sprich der Code ist Regelkonform
+\item \textbf{semantisch korrekt} heißt, dass das richtige Ergebnis geliefert wird (auch logisch korrekt)
+\end{itemize}
+%
+\paragraph{Wahrheitstafel am Beispiel $t = (\neg y \land \neg(x \land) ) \lor z$:}
+\ \\ \textbf{WAHRHEITSTAFEL EINFUEGEN}
+%TODO
+%
+\begin{defi}{logische Äquivalenz}
+\\Zwei Formeln $s,t$ sind \textbf{logisch äquivalent}, wenn für alle Belegungen $i,j$ $_i = t_j$.\\
+Schreibweise: $s \equiv t$
+
+Bsp.:
+\[ s = \neg( y \land \neg z ) \equiv t \]
+\end{defi}
+%
+\paragraph{Übung: Sind $s = x \rightarrow y$ und $t = x \land z \rightarrow y \land z$ (logisch) äquivalent?}
+\ \\ \textbf{WAHRHEITSTAFEL EINFUEGEN}
+%TODO
+%
+\subsubsection{Regeln der Logik}
+\paragraph{Satz: Für beliebige Formeln $s,t,r$ gilt:}
+\begin{align*}
+\text{Assoziativität}&\begin{cases}
+(s \land t) \lor r &\equiv s \land (t \land r)\\
+(s \land t) \lor r &\equiv s \land (t \land r)
+\end{cases} \\
+%
+\text{Kommutativität}&\begin{cases}
+s \land t &\equiv t \land s\\
+s \lor t &\equiv t \lor s
+\end{cases} \\
+%
+\text{Distributivität}&\begin{cases}
+s \land (t \lor r) &\equiv s \land t \lor s \land r\\
+s \lor t \land r &\equiv (s \lor t) \land (s \lor r)
+\end{cases} \\
+%
+\text{Idempotenz}&\begin{cases}
+s \land s &\equiv s \\
+s \lor s &\equiv s
+\end{cases} \\
+%
+\text{Neutralität}&\begin{cases}
+t \land s &\equiv s \\
+f \lor s &\equiv s
+\end{cases} \\
+%
+\text{Dominanz}&\begin{cases}
+f \land s &\equiv s \\
+t \lor s &\equiv s
+\end{cases} \\
+%
+\text{Absorption}&\begin{cases}
+s \land (s \lor t) &\equiv s \\
+s \lor (s \land t) &\equiv s
+\end{cases} \\
+%
+\text{Morgan'sche Regel}&\begin{cases}
+\neg (s \land t) &\equiv \neg s \land \neg t\\
+\neg (s \lor t) &\equiv \neg s \lor \neg t
+\end{cases} \\
+%
+\text{Komplementäreigenschaft}&\begin{cases}
+s \land \neg s &\equiv 0 \\
+s \lor \neg s &\equiv 1
+\end{cases} \\
+%
+\text{doppelte Negation}&\begin{cases}
+\neg (\neg s) &\equiv s
+\end{cases} \\
+\end{align*}
+%
+\paragraph{Beispiel:}
+\begin{align*}
+x_1 \lor (((x_2 'lor x_3)) \land \neg (\neg(\neg x_1(\neg x_1 \lor x_4)))
+&\equiv x1 \lor ((x_2 \lor x_3) \land x_1 )  && \mid \text{ Abs., 2x-Neg., Komm.}\\
+&\equiv x_1
+\end{align*}
+%
+\paragraph{Übung: }Sind die Operationen $\rightarrow$ und $\leftrightarrow$ assoziativ bzw. kommutativ?
+\ \\ \textbf{WAHRHEITSTAFEL EINFUEGEN}
+%TODO
+%
+\paragraph{Gibt es ein neutrales bzw. dominierendes Element bzgl. $\leftrightarrow$?}
+\ \\Dominanz: $(0 \leftrightarrow s) \equiv false$\\
+Neutralität: $(1 \leftrightarrow s) \equiv s$
+%
+% Day 1 to Day 2 cut here?
+%TODO
+%
+\paragraph{weitere Äquivalenzen:}
+\begin{enumerate}
+\item $s \rightarrow t \equiv \neg s \lor t$
+\item $s \leftrightarrow t \equiv (\neg s \lor t) \land (s \lor \neg t) \equiv s \land t \lor \neg s \land \neg t$
+\item $s \rightarrow t \land r \equiv (s\rightarrow t) \land (s \rightarrow r)$
+\item $s \rightarrow t \lor r \equiv (s\rightarrow t) \lor (s \rightarrow r)$
+\item $s \land t \rightarrow r \equiv (s \rightarrow r) \lor (t \rightarrow r)$
+\item $s \lor t \rightarrow r \equiv (s \rightarrow r) \land (t \rightarrow r)$
+\end{enumerate}
+%
+\begin{defi}
+Eine aussagelogische Formel $s$
+\begin{itemize}
+\item ist \glq erfüllbar\grq , wenn für \emph{(mindestens) eine} Belegung $s$ den Wert $1$ annimmt
+\item eine \glq Tautologie\grq\ (oder \glq allgemeingültig\grq ), wenn für \emph{jede} Belegung $s$ $1$ annimmt
+\item heißt \glq Kontradiktion\grq , wenn keine Belegung existiert, sodass $s$ $1$ annimmt
+\end{itemize}
+\end{defi}
+\end{document}
