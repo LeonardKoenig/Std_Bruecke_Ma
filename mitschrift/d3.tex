@@ -1,0 +1,74 @@
+\documentclass[10pt,a4paper]{article}
+\usepackage[utf8]{inputenc}
+\usepackage[ngerman]{babel}
+\usepackage{amsmath}
+\usepackage{amsfonts}
+\usepackage{amssymb}
+\usepackage[left=2cm,right=2cm,top=2cm,bottom=2cm]{geometry}
+\author{Leonard K\"oenig}
+\title{titel}
+\begin{document}
+\section{Pr\"adikatenlogik}
+\paragraph{Quantoren}
+\ \\$ \forall $ Allquantor \\
+$ \exists $ Existenzquantor \\
+
+\[
+\forall_{x\in U}:P(x) \text{ w.A.},\text{ wenn }P(a) \text{ w.A. f\"ur alle } a \text{ aus } U
+\]
+\[
+\exists_{x\in U}:P(x) \text{ w.A.},\text{ wenn ein }P(a) \text{ existiert, sodass } P(a) \text{ eine w.A.}
+\]
+
+\paragraph{Beispiel: Grenzwert-Definition}
+\ \\
+$(a_n)$ (mit $n\in \mathbb{N}$) hat Grenzwert $a$
+\[
+\Leftrightarrow \forall_{\varepsilon > 0} \, \exists_{n_0 \in \mathbb{N}} \, \forall_{n \geq n_0}: |a_n - a| < \varepsilon
+\]
+
+\paragraph{Definition (Pr\"adikat):}
+\ \\
+\glqq Ein logisches Pr\"adikat ist ein Ausdruck, der eine oder mehrere Variablen enth\"alt, sodass bei Belegung aller Variablen mit Objekten aus dem festgelegten Individuenbereich $B\setminus U$ eine Aussage entsteht.\grqq \\
+\ \\
+Beispiel:\\
+\[
+U=\mathbb{N}=\{0,1,2,3,\ldots\}
+\]
+$P(x)$ : \glq $x$ ist prim\grq \\
+$R(x,y) = $\glq$x \leq y$\grq \\
+$Q(x,y) = $\glq$x=y+2$\grq
+
+\paragraph{\"Aquivalenzen bei Pr\"adikaten}
+\begin{enumerate}
+\item $\neg \forall_x : P(x) \equiv \exists_x: \neg P(x)$
+\item $\neg \exists_x : P(x) \equiv \forall_x: \neg P(x)$
+\item $\forall_x : P(x) \land \forall_x : Q(x) \equiv \forall : P(x) \land Q(x)$
+\item $\exists_x : P(x) \lor \exists_x : Q(x) \equiv \exists_x : P(x) \lor Q(x)$
+\item $\forall_{x,y} : R(x,y) \equiv \forall_{y,x} : R(x,y)$
+\item $\exists_{x,y} : R(x,y) \equiv \exists_{y,x} : R(x,y)$
+\item[$\perp$] $\forall_x : P(x) \lor \forall_x:Q(x) \equiv \forall_x : P(x) \lor Q(x)$
+\item[$\perp$] $\exists_x : P(x) \land \exists : Q(x) \equiv \exists_x : P(x) \land Q(x)$
+\item[$\perp$] $\forall_x \exists_y : R(x,y) \equiv \exists_y \forall_x : R(x,y)$
+
+\section{Beweistechniken}
+
+\paragraph{Basiswissen:}
+\ \\
+\begin{itemize}
+\item $\mathbb{N} = \{0,1,2,3,\ldots\}$ nat\"urliche Zahlen
+\item $\mathbb{N}^{+} = \mathbb{N}\setminus\{0\}$
+\item Addition und Multiplikation sind kommutativ, assoziativ und distributiv
+\item $n\in\mathbb{N}$ ist durch $d\in\mathbb{N}^+$ teilbar (auch: \glqq d teilt u\grqq ), wenn ein $k\in\mathbb{N}$ existiert, sodass $n=k\cdot d$\\
+Notation: $d|n$
+\item $p\geq 2$ aus $\mathbb{N}$ ist prim, wenn sie nur durch $p$ und $1$ teilbar sind.
+\item Jedes $n\geq 2$ besitzt eine \emph{eindeutige} Zerlegung in Primfaktoren, d.h.
+\[
+n = p_1 \cdot p_2 \cdot \ldots \cdot p_k
+\]
+mit $p_k$ Primfaktoren. Dies gilt insbesondere f\"ur $n=n$
+\item $n\in\mathbb{N}
+\end{itemize}
+\end{enumerate}
+
+\end{document}

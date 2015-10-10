@@ -1,12 +1,41 @@
-\documentclass[10pt,a4paper]{article}
+\documentclass[11pt, paper=a4]{scrartcl}
 \usepackage[utf8]{inputenc}
+\usepackage[T1]{fontenc}
+\usepackage{lmodern}
+\usepackage{mathtools,amssymb,amsthm}
 \usepackage[ngerman]{babel}
+\usepackage[cmyk]{xcolor}
+\usepackage{tikz}
+\usepackage{nicefrac}
+\usepackage[margin=2cm,top=3cm]{geometry}
+\usepackage{fancyhdr}
+\usepackage{lastpage}
+\usepackage[parfill]{parskip}
+\usepackage{verbatim}
+%
 \usepackage{amsmath}
 \usepackage{amsfonts}
 \usepackage{amssymb}
 \usepackage{amsthm} % for proof-environment
 \usepackage{bm} % for better \boldsymbol
-\usepackage[left=2cm,right=2cm,top=2cm,bottom=2cm]{geometry}
+%
+\addtokomafont{disposition}{\rmfamily}
+%\addtokomafont{section}{\sffamily}
+%
+\DeclareSymbolFont{extraup}{U}{zavm}{m}{n}
+\DeclareMathSymbol{\varheart}{\mathalpha}{extraup}{86}
+\newcommand\Q{\mathbb{Q}}
+\newcommand\N{\mathbb{N}}
+\newcommand\Z{\mathbb{Z}}
+\newcommand\R{\mathbb{R}}
+%
+\pagestyle{fancy}
+\lhead{ Leonard K\"onig }
+\chead{\bfseries Beweis Br\"uckenkurs}
+%\rhead{Seite \thepage\,/\,\pageref{LastPage}}
+\rhead{Datum 2015-10-02}
+\cfoot{}
+%
 \author{Leonard K\"onig}
 \title{Beweis zu Aufgabe}
 \date{2015-10-01}
