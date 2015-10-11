@@ -11,191 +11,6 @@
 %\author{Leonard K\"oenig}
 %\title{titel}
 %\begin{document}
-\section{Pr\"adikatenlogik}
-\paragraph{Quantoren}
-\ \\$ \forall $ Allquantor \\
-$ \exists $ Existenzquantor \\
-
-\[
-\forall_{x\in U}:P(x) \text{ w.A.},\text{ wenn }P(a) \text{ w.A. f\"ur alle } a \text{ aus } U
-\]
-\[
-\exists_{x\in U}:P(x) \text{ w.A.},\text{ wenn ein }P(a) \text{ existiert, sodass } P(a) \text{ eine w.A.}
-\]
-
-\paragraph{Beispiel: Grenzwert-Definition}
-\ \\
-$(a_n)$ (mit $n\in \mathbb{N}$) hat Grenzwert $a$
-\[
-\Leftrightarrow \forall_{\varepsilon > 0} \, \exists_{n_0 \in \mathbb{N}} \, \forall_{n \geq n_0}: |a_n - a| < \varepsilon
-\]
-
-\paragraph{Definition (Pr\"adikat):}
-\ \\
-\glqq Ein logisches Pr\"adikat ist ein Ausdruck, der eine oder mehrere Variablen enth\"alt, sodass bei Belegung aller Variablen mit Objekten aus dem festgelegten Individuenbereich $B\setminus U$ eine Aussage entsteht.\grqq \\
-\ \\
-Beispiel:\\
-\[
-U=\mathbb{N}=\{0,1,2,3,\ldots\}
-\]
-$P(x)$ : \glq $x$ ist prim\grq \\
-$R(x,y) = $\glq$x \leq y$\grq \\
-$Q(x,y) = $\glq$x=y+2$\grq
-
-\paragraph{\"Aquivalenzen bei Pr\"adikaten}
-\begin{enumerate}
-\item $\neg \forall_x : P(x) \equiv \exists_x: \neg P(x)$
-\item $\neg \exists_x : P(x) \equiv \forall_x: \neg P(x)$
-\item $\forall_x : P(x) \land \forall_x : Q(x) \equiv \forall : P(x) \land Q(x)$
-\item $\exists_x : P(x) \lor \exists_x : Q(x) \equiv \exists_x : P(x) \lor Q(x)$
-\item $\forall_{x,y} : R(x,y) \equiv \forall_{y,x} : R(x,y)$
-\item $\exists_{x,y} : R(x,y) \equiv \exists_{y,x} : R(x,y)$
-\item[$\perp$] $\forall_x : P(x) \lor \forall_x:Q(x) \equiv \forall_x : P(x) \lor Q(x)$
-\item[$\perp$] $\exists_x : P(x) \land \exists : Q(x) \equiv \exists_x : P(x) \land Q(x)$
-\item[$\perp$] $\forall_x \exists_y : R(x,y) \equiv \exists_y \forall_x : R(x,y)$
-\end{enumerate}
-
-\section{Beweistechniken}
-
-\paragraph{Basiswissen:}
-\ \\
-\begin{itemize}
-\item $\mathbb{N} = \{0,1,2,3,\ldots\}$ nat\"urliche Zahlen
-\item $\mathbb{N}^{+} = \mathbb{N}\setminus\{0\}$
-\item Addition und Multiplikation sind kommutativ, assoziativ und distributiv
-\item $n\in\mathbb{N}$ ist durch $d\in\mathbb{N}^+$ teilbar (auch: \glqq d teilt u\grqq ), wenn ein $k\in\mathbb{N}$ existiert, sodass $n=k\cdot d$\\
-Notation: $d|n$
-\item $p\geq 2$ aus $\mathbb{N}$ ist prim, wenn sie nur durch $p$ und $1$ teilbar sind.
-\item Jedes $n\geq 2$ besitzt eine \emph{eindeutige} Zerlegung in Primfaktoren, d.h.
-\[
-n = p_1 \cdot p_2 \cdot \ldots \cdot p_k
-\]
-mit $p_k$ Primfaktoren. Dies gilt insbesondere f\"ur $n=n$
-\item $n\in\mathbb{N}$ ist gerade, wenn $n$ durch $2$ teilbar ist, d.h. $n=2k$ für ein $k\in\mathbb{N}$\\
-$n$ ist ungerade, wenn ein solches k nicht existiert, bzw. $n=2k'+1$
-\item $\forall n\in\mathbb{N},d\in\mathbb{N}^{+}$ gibt es eindeutige Werte $q,r\in\mathbb{N}$ mit $n=q\cdot d+r$ und $0\leq r< d$ mit $r=n\bmod d$
-\end{itemize}
-
-\subsection{Direkter Beweis}
-Ein direkter Beweis hat die Form $p\rightarrow q$ mit Prämisse $p$ und Behauptung $q$. Man baut eine \glqq logische Kette\grqq , nach folgendem Schema:
-\[
-p=p_1\rightarrow p_2 \rightarrow p_3 \rightarrow \ldots \rightarrow p_k=q
-\]
-Wobei alle $p_n\rightarrow p_{n+1}$ möglichst triviale Folgerungen sind.
-
-\paragraph{Beispiel:}Wenn $\underbrace{l|m \land m|n}_{p}$, dann $\underbrace{l|n}_{q}$.
-\begin{proof}
-\begin{align}
-&l|m \land m|n \\
-\Rightarrow &\exists_{k\in\mathbb{N}}: m=k\cdot l \land \exists_{j\in\mathbb{N}}: n=j\cdot m \\
-\Rightarrow &\exists_{k,j\in\mathbb{N}}: m=k\cdot l \land n=j\cdot m \\
-\Rightarrow &\exists_{k,j\in\mathbb{N}}: n=j(k\cdot l) \\
-\Rightarrow &\exists_{k,j\in\mathbb{N}}: n=(j\cdot k)l && \mid k'=j\cdot k \\
-\Rightarrow &\exists_{k,j\in\mathbb{N}}: n=k' \cdot l \\
-\Rightarrow &l|n
-\end{align}
-\end{proof}
-
-\subsection{Beweis durch Fallunterscheidung}
-Ein Beweis der Form $p\rightarrow q \equiv \underbrace{(p\land r\rightarrow q)}_\text{Fall 1} \land \underbrace{(p\land\neg r \rightarrow q)}_\text{Fall 2}$ ist ein Beweis durch Fallunterscheidung, da wir die Fälle $r$ und $\neg r$ unterscheidet betrachten und für beide einen Teilbeweis führen.\\
-Beispiel: sh. Beispiel zur Kontraposition.
-\subsection{Indirekter Beweis}
-\begin{itemize}
-\item Kontra\emph{position} (Annahme der Gegenposition) \\
-$p\rightarrow q \equiv \neg q \rightarrow\neg p$
-\item Kontra\emph{diktion} (Widerspruch) \\
-$p\rightarrow q \equiv p \land\neg q \rightarrow 0$
-\end{itemize}
-
-\paragraph{Beispiel}
-$k|m\land k\nmid n \Rightarrow m\nmid n$
-\paragraph{Beispiel (Widerspruch):}
-\begin{proof}
-\begin{align*}
-&k|m\land k\nmid n \land m\mid n \\
-\Rightarrow &k|m\land k\nmid n \land m\mid n && \mid k|m \land m|n \Rightarrow k|n \\
-\Rightarrow &k|n \land k\nmid n \\
-\Rightarrow &\bot
-\end{align*}
-\end{proof}
-
-\paragraph{Beispiel (Kontraposition):}
-\begin{proof}
-\[
-m|n \Rightarrow k\nmid m \lor k|n
-\]
-\begin{itemize}
-\item Fall 1 ($k\nmid m$): w.A. nach $\neg p$
-\item Fall 2 ($k\mid m$): $m|n \land k|m \Rightarrow k|n$, w.A. nach $\neg p$
-\end{itemize}
-\end{proof}
-
-\subsection{Induktion}
-\subsubsection{Einschub: Peano-Axiome der natürlichen Zahlen}
-\begin{itemize}
-\item $0\in\mathbb{N}$
-\item fúr jedes $n\in\mathbb{N}$ gibt es einen \emph{eindeutigen} Nachfolger $s(n)\in\mathbb{N}$
-\item verschiedene natürliche Zahlen haben verschiedene Nachfolger:\\
-$n\neq n' \Rightarrow s(n) \neq s(n')$
-\item $0$ ist kein Nachfolger
-\item $\mathbb{N}$ ist die \emph{kleinste Menge, die diese Bedingungen erfüllt.}
-\end{itemize}
-
-
-\paragraph{Konsequenz: Rekursion}Man kann eine Funktion $f$ auf der Menge der natürlichen Zahlen definieren, indem man
-\begin{itemize}
-\item $f(0)$ festlegt und
-\item $f(s(n))$ auf $f(n)$ zurückführt
-\end{itemize}
-Bspw.: $f:\mathbb{N}\rightarrow\{0,1\}$ mit
-\begin{itemize}
-\item $f(0)=0$
-\item $f(s(n))=\neg f(n)$
-\end{itemize}
-%TODO
-\textbf{TABELLE EINFUEGEN!!!}
-% Auf Seite 14 oben
-
-Insbesondere aber auch die Addition bzgl. $\mathbb{N}$:
-\begin{align*}
-f_n:\mathbb{N}\rightarrow\mathbb{N}\\
-n\mapsto m+n
-\end{align*}
-\begin{enumerate}
-\item $f_m(0)=m$
-\item $f_m(s(n)) = s(f_m(n))$
-\end{enumerate}
-
-\paragraph{Am Beispiel $4+2$:}
-\[
-f_4(2)=f_4(s(1))=s(f_4(1))=s(f_4(s(0)))=s(s(f_4(0)))=s(s(4))=s(5)=6
-\]
-\subsubsection{Rekursion als Beweismethode: Induktion}
-\paragraph{Idee:}Ein Prädikat $P(n)$ wobei $n\in\mathbb{N}$ ist wahr für alle $n\in\mathbb{N}$, wenn
-\begin{enumerate}
-\item $P(0)$ wahr ist und
-\item für beliebige $n$ aus $P(n)$ $P(n+1)$ folgt (\glqq Dominoprinzip\grqq )
-\end{enumerate}
-
-(1) nennt man dabei \textbf{Induktionsanfang} oder \textbf{Induktionsverankerung} und (2) den \textbf{Induktionsschritt}, wobei man letzteren in die Gültigkeit von $P(n)$ als \textbf{Induktionsvoraussetzung} und die der \textbf{Induktionsbehauptung} $P(n+1)$ unterteilen kann.
-
-\paragraph{Beispiel durch vollständige Induktion nach $n$:}$6|n^3 -n,\, \forall_{n\in\mathbb{N}}$\\
-\begin{proof}
-\ \\
-\textbf{IA.:} $n=0$: $0^3-0=0$, w.A. \\
-\textbf{IV.:} $6|n^3 -n$ w.A. für ein $n$ \\
-\textbf{IB.:} aus $6|n^3 -n \rightarrow 6|(n-1)^3 -(n-1)$ \\
-\textbf{IS.:}
-\begin{align*}
-&(n+1)^3 - (n+1) \\
-= &n^3+3n^2+3n+1-(n+1) \\
-= &(n^3-n) + 3n^2 + 3n && |k=\frac{n^3-n}{6} \text{ nach IV.}\\
-= &6k +3(n^2+n) \\
-= &6k + 3(n(n+1)) && |\text{Da $n$ oder $n+1$ gerade: } l=\frac{n(n+1)}{2} \\
-= &6k+3\cdot 2l \\
-= &6(k+l)
-\end{align*}
-\end{proof}
 
 \section{Mengenlehre}
 \paragraph{Beschreibung (G. Cantor):}\glqq Eine Menge ist die Zusammenfassung von bestimmten und wohl-strukturierten Objekten unserer Anschauung oder unseres Denkens
@@ -325,7 +140,7 @@ Anzahl der Elemente: $2^2=4$
 
 \paragraph{Satz:}Die Potenzmenge einer endlichen Menge mit $n$ Elementen hat selbst $2^n$ Elemente.
 
-\section{Relationen}
+\subsection{Relationen}
 \paragraph{Definition (geordnetes Paar):}Ein geordnetes Paar $(a,b)$ von zwei Objekten $a$ und $b$ ist ein Konstrukt mit folgender Eigenschaft:
 \[
 (a,b) = (c,d) \xLeftrightarrow{\text{Def.}} a=c \land b=d
@@ -360,7 +175,7 @@ Beispiele:
 \]
 \end{itemize}
 
-\subsection{Darstellung von Relationen}
+\subsubsection{Darstellung von Relationen}
 \begin{itemize}
 \item Als Menge von geordneten Paaren (nach Definition)
 \item In Form von Tabellen ($A$: Spalten, $B$: Zeilen):
@@ -379,7 +194,7 @@ Beispiele:
 \textbf{DIAGRAMM EINFUEGEN!!!}
 \end{itemize}
 
-\subsection{Relationsoperationen}
+\subsubsection{Relationsoperationen}
 $R,S\subseteq A\times B$ Relation:
 \begin{itemize}
 \item \textbf{Durchschnittsrelation} $R\cap S$, \textbf{Vereinigungsrelation} $R\cup S$
@@ -407,7 +222,7 @@ Dh. $a\, (S\circ T)\, c \xLeftrightarrow{Def.} a\,S\,b \land b\,T\,c$
 \item $< \circ < = \{(n,m) | n+2\leq m\}$
 \end{itemize}
 
-\subsection{Eigenschaften von Relationen}
+\subsubsection{Eigenschaften von Relationen}
 $R\subseteq A\times A$ nennt man
 \begin{itemize}
 \item \textbf{reflexiv}, wenn $a\,R\,b$ gilt für alle $a\in A$, dh. $Id_A \subseteq R$
@@ -416,4 +231,143 @@ $R\subseteq A\times A$ nennt man
 \item \textbf{antisymmetrisch}, wenn aus $a\,R\,b$ imd $b\,R\,a$ folgt, dass $a=b$, dh. $R\cap R^{-1}\subseteq Id_A$ (Bspw. $\leq$)
 \item \textbf{assymetrisch}, wenn aus $a\,R\,b$ folgt, dass $(b,a)\notin R$, dh. $R\cap R^{-1}=\emptyset$ (Bspw. $<$)
 \end{itemize}
+
+\subsection{Äquivalenzrelationen}
+\paragraph{Definition:} $R\subset A\times A$ ist eine Äquivalenzrelation, wenn sie reflexiv, symmetrisch und transitiv ist.
+
+\paragraph{Bsp.:}
+\begin{itemize}
+\item $A=\mathbb{N}$, $R\subset\mathbb{N}\times\mathbb{N}$ definiert durch
+\[
+a\,R\,b \xLeftrightarrow{\text{Def.}} a\bmod 5
+\]
+(dh. gleicher Rest beim Teilen)
+\item Die logische Äquivalenz ist eine Äquivalenzrelation auf der Menge der Boole'schen Terme/Formeln.
+\item Kongruenz von Dreiecken
+\end{itemize}
+
+\paragraph{Definition (Äquivalenzklassen):}$R$ ist \"Aquivalenzrelation \"uber eine Menge $A$, $a\in A$.\\
+Die \"Aquivalenzklasse von a ist die Menge aller Elemente von $A$, die zu $a$ in Relation stehen:
+\[
+[a]_{R} =_{Def.} \{x \in A | x\,R\,a\}
+\]
+
+Beispiel:\\
+Relation $\equiv$ : mod $5$, $A = \mathbb{N}$ $a=17$
+\begin{align*}
+&[17]_{\text{mod }5} = \{2,7,12,17,22,...\} \\
+&[8]_{\text{mod }5} = \{3,8,13,18, \ldots\}
+\end{align*}
+Es gibt $5$ verschiedene \"Aquivalenzklassen bzgl. dieser Relation.
+
+\paragraph{Lemma: } Ist $R$ eine \"Aquivalenzrelation auf oder \"uber einer Menge $A$, dann sind zwei \"Aquivalenzklassen $[a]_R$ und $[b]_R$ entweder gleich oder disjunkt, dh. $[a]_R \cap [b]_R = \emptyset$
+
+Folgerung: Die Menge der (verschiedenen) \"Aquivalenzklassen einer \"Aquivalenzrelation $R$ \"ueber einer Menge $A$ bildet eine Partition derselben Menge.\\
+Begündung:\\
+Betrachte Menge der \"Aquivalenzklassen
+\[
+\{[a_1]_R,[a_2]_R,\ldots\}
+\]
+Ist eine Partition, weil:
+\begin{itemize}
+\item $[a_i]_R$ ist nicht leer, weil $R$ reflexiv und somit $a_i \in [a_i]_R$
+\item $\bigcup_{i \in I} [a_i]_R = A$, weil jedes $a\in A$ in seiner \"Aquivalenzklasse liegt.
+\item paarweise disjunkt folgt aus dem Lemma.
+\end{itemize}
+\paragraph{Definiton (Repr\"asentantensystem): }Ist $R$ eine Äquivalenzrelation, dann nennt man eine Auswahl von genau einem Element aus jeder Äquivalenzklasse ein Representantensystem von $R$.
+
+Beispiel: 1) $\equiv$ mod $5$ : $\{10,21,2,16,39\}$
+
+
+2) $A=R \sim \subseteq R \times R$
+\[
+x\sim y \Leftrightarrow x-y \in \mathbb{Z}
+\]
+z.B.: $2.45 \sim 7.45$ und $1.3 \sim -2.7$
+
+$\sim$ ist eine Äquivalenzrelation, weil:
+\begin{itemize}
+\item reflektiv, weil $x-x = 0 \in \mathbb{Z}$ für alle $x\in\mathbb{R}$
+\item symmetrisch, weil $x\sim y \Rightarrow x-y \in \mathbb{Z} \Rightarrow -(x-y) \in \mathbb{Z} \Rightarrow  (y-x) \in \mathbb{Z} \Rightarrow y\sim x$
+\item transitiv, weil $x\sim y \land y\sim z \Rightarrow x-y \in \mathbb{Z} \land y-z \in \mathbb{Z} \Rightarrow (x-y)+(y-z)\in \mathbb{Z} \Rightarrow x-z \in \mathbb{Z} \Rightarrow x\sim z$
+\end{itemize}
+
+$[1.6]_{\sim} = \{ \ldots\, , -1.4, -0.4, 0.6, 1.6, 2.6,\, \ldots \}$\\
+Standardrepresentantensystem ist Intervall $[0,1)$.
+
+
+\paragraph{Beispiel (Würfelspiel): }
+\begin{itemize}
+\item ein roter und ein blauer Würfel mit jeweils $6$ Seiten
+\item Relation ist die Summe
+\item Wir wollen eine Äquivalenzklasse, sodass wir alle mit den gleichen Summen zusammenfassen
+\end{itemize}
+
+\newpage
+\paragraph{Übungen:}
+\begin{enumerate}
+\item $|A|=n$, $|B|=m$\\
+Wie viele Relationen gibt es zwischen A und B?
+\ \\
+$R\subseteq A \times B$ Teilmenge $|A \times B| = m \cdot n$\\
+Menge der Relationen $\mathcal{P}(A\times B)$, $|\mathcal{P}(A\times B)|=2^{n\cdot m}$
+\item $|A|=2$\\
+Wie viele Äquivalenzrelationen gibt es über A?
+\ \\
+$2$, nämlich die identische Relation und die Allrelation.
+\item $|A|=3$\\
+Wie viele Äquivalenzrelationen gibt es über A?
+\ \\
+Fallunterscheidung:
+\begin{itemize}
+\item mit $1$ Äquivalenzklasse: $1$ (Allrelation)
+\item mit $2$ Äquivalenzklassen: $3$
+\item mit $3$ Äquivalenzklassen: $1$ ($Id_A$)
+\item[$\Rightarrow$] $5$
+\end{itemize}
+\item $|A|=4$\\
+Wie viele Äquivalenzrelationen gibt es über A?
+\ \\
+Fallunterscheidung:
+\begin{itemize}
+\item mit $1$ Äquivalenzklasse: $1$ (Allrelation)
+\item mit $2$ Äquivalenzklassen: $4+3$
+\item mit $3$ Äquivalenzklassen: $6$
+\item mit $4$ Äquivalenzklassen: $1$ ($Id_A$)
+\item[$\Rightarrow$] $15$
+\end{itemize}
+\end{enumerate}
+
+\subsection{Ordnungsrelationen}
+\paragraph{Definition:}Eine (partielle) Ordnungsrelation ist eine Relation $R$ über einer Grundmenge $A$, die $3$ Eigenschaften hat:
+\begin{enumerate}
+\item reflexiv,
+\item transitiv und
+\item \emph{anti}symmetrisch.
+\end{enumerate}
+$(A,R)$ wird auch POSet (Partially Ordered Set) genannt.\\
+Ist $R$ \emph{partielle} Ordnungsrelation über $A$ und $a,b \in A$ zwei Elemente von $A$, dann nennt man $a$ und $b$ vergleichbar, wenn $a\, R\, b$ oder $b\, R\, a$.\\
+$R$ ist \emph{total}, wenn zwei \emph{beliebige} $a,b\in A$ vergleichbar sind.
+
+\paragraph{Beispiele:}
+\begin{itemize}
+\item $\mathbb{N,Q,R}$ und $\leq$ oder mit $\geq$
+\item $\mathbb{N}^+$ und $|$ (Teilbarkeit)
+\item $\mathcal{P}(M)$ mit $\subseteq$ (Inklusionsrelation)
+\item Menge von Wörtern $A$ und lexikographische Ordnung
+\end{itemize}
+Die Relationen $\leq$ und $\geq$ sowie die lexikographische Ordnung sind total; die Relationen $|$ und $\subseteq$ sind \emph{nicht} total.
+
+\paragraph{Hasse-Diagramme}als minimalistische Beschreibung von endlichen POSets:\\
+Beispiel: $\leq$-Relation über $\{1,2,3,4\}$ als gerichteter Graph
+%TODO
+% Grafik einfuegen
+
+\paragraph{Definition:} Eine Relation $S$ über $A$ ist eine strenge (strikte) Ordnungsrelation, wenn sie transitiv und asymmetrisch ist.
+
+\paragraph{Beispiele:}$<,>,\subseteq$, \glqq echter Teiler\grqq , \glqq echte Inklusion\grqq
+\ \\
+$R$ Ordnungsrelation\\
+$S=R\setminus Id_A$ strenge Ordnungsrelation
+
 %\end{document}
