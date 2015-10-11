@@ -52,7 +52,6 @@ Analogie zu Programmen:
 \item \textbf{semantisch korrekt} heißt, dass das richtige Ergebnis geliefert wird (auch logisch korrekt)
 \end{itemize}
 %
-\newtheorem{defi}{Definition}
 \begin{defi}[Term der Aussagenlogik]
 Gegeben Variablenmenge $V = \{ x,y,z,x_1,x_2, ...\} $
 \begin{enumerate}
@@ -81,12 +80,14 @@ $(\neg)$, $(\land,\lor)$, $(\rightarrow, \leftrightarrow)$
 \end{itemize}
 \item Auch bei Assoziativität \emph{ändern} sich die Formeln, sind aber äquivalent!
 \end{itemize}
-\paragraph{Definition (Semantik):}Semantik ist die Interpretation der Formeln
+\begin{defi}[Semantik]
+Semantik ist die Interpretation der Formeln
 \begin{itemize}
 \item Belegung mit Wahrheitswerten
 \item Auswertung der Formel\\
 Boolesche Funktion: Auswertung unter allen möglichen Belegungen
 \end{itemize}
+\end{defi}
 %
 \paragraph{Wahrheitstafel am Beispiel $t = (\neg y \land \neg(x \land) ) \lor z$:}
 \ \\ \textbf{WAHRHEITSTAFEL EINFUEGEN}
@@ -213,11 +214,10 @@ $(a_n)$ (mit $n\in \mathbb{N}$) hat Grenzwert $a$
 \Leftrightarrow \forall_{\varepsilon > 0} \, \exists_{n_0 \in \mathbb{N}} \, \forall_{n \geq n_0}: |a_n - a| < \varepsilon
 \]
 
-\paragraph{Definition (Pr\"adikat):}
-\ \\
-\glqq Ein logisches Pr\"adikat ist ein Ausdruck, der eine oder mehrere Variablen enth\"alt, sodass bei Belegung aller Variablen mit Objekten aus dem festgelegten Individuenbereich $B\setminus U$ eine Aussage entsteht.\grqq \\
-\ \\
-Beispiel:\\
+\begin{defi}[Prädikat]
+\glqq Ein logisches Prädikat ist ein Ausdruck, der eine oder mehrere Variablen enthält, sodass bei Belegung aller Variablen mit Objekten aus dem festgelegten Individuenbereich $B\setminus U$ eine Aussage entsteht.\grqq
+\end{defi}
+\paragraph{Beispiel:}
 \[
 U=\mathbb{N}=\{0,1,2,3,\ldots\}
 \]
@@ -225,7 +225,7 @@ $P(x)$ : \glq $x$ ist prim\grq \\
 $R(x,y) = $\glq$x \leq y$\grq \\
 $Q(x,y) = $\glq$x=y+2$\grq
 
-\paragraph{\"Aquivalenzen bei Pr\"adikaten}
+\paragraph{Äquivalenzen bei Prädikaten}
 \begin{enumerate}
 \item $\neg \forall_x : P(x) \equiv \exists_x: \neg P(x)$
 \item $\neg \exists_x : P(x) \equiv \forall_x: \neg P(x)$
@@ -243,7 +243,7 @@ $Q(x,y) = $\glq$x=y+2$\grq
 \paragraph{Basiswissen:}
 \ \\
 \begin{itemize}
-\item $\mathbb{N} = \{0,1,2,3,\ldots\}$ nat\"urliche Zahlen
+\item $\mathbb{N} = \{0,1,2,3,\ldots\}$ natürliche Zahlen
 \item $\mathbb{N}^{+} = \mathbb{N}\setminus\{0\}$
 \item Addition und Multiplikation sind kommutativ, assoziativ und distributiv
 \item $n\in\mathbb{N}$ ist durch $d\in\mathbb{N}^+$ teilbar (auch: \glqq d teilt u\grqq ), wenn ein $k\in\mathbb{N}$ existiert, sodass $n=k\cdot d$\\

@@ -12,8 +12,8 @@
 
 \section{Funktionen}
 \paragraph{Beschreibung:}Unter einer Funktion bzw. Abbildung (hier synonym) $f$ von einer Menge $A$ in eine Menge $B$ verstehen wir eine Zuordnung bei der jedem Element $a\in A$ ein eindeutig bestimmtes Element $b\in B$ entspricht.
-\paragraph{Definition:}Ist $f$ eine Relation zwischen $A$ und $B$, sodass es für jedes $a\in A$ genau ein $b\in B$ gibt mit $a\, f\, b$ (oder $(a,b)\in f$).\\
-In diesem Fall kann $f$ als Funktion schreiben:
+\begin{defi}[Funktionen]
+Ist $f$ eine Relation zwischen $A$ und $B$, sodass es für jedes $a\in A$ genau ein $b\in B$ gibt mit $a\, f\, b$ (oder $(a,b)\in f$), dann kann man $f$ als Funktion schreiben:
 \[
 f:A\rightarrow B \qquad f(a)=b
 \]
@@ -27,6 +27,8 @@ Hier ist $A$ der \emph{Definitionsbereich} und $B$ der \emph{Wertebereich}.
 \[
 \text{Urbild von $N$ unter $f$:} \quad \mathbb{N}\subseteq B \quad f^{-1}(A)
 \]
+\end{defi}
+%
 \subsection{Eigenschaften von Funktionen}
 Eine Funktion $f$ mit Definitionsbereich $A$ und Wertebereich $B$ ($f:A\rightarrow B$) ist
 \begin{itemize}
@@ -62,14 +64,19 @@ $f$ als Funktion $f:\mathbb{R}^{\geq 0}\rightarrow\mathbb{R}^{\geq 0}$ ist
 \end{itemize}
 
 \subsubsection{Operationen auf Funktionen}
-\paragraph{Definition (Komposition von Funktionen):}Sind $f:A\rightarrow B$ und $g:B\rightarrow C$ Funktionen, dann ist die \textbf{Relation} $f\circ g$ eine Funktion von $A\rightarrow C$.\\
+\begin{defi}[Komposition von Funktionen]
+Sind $f:A\rightarrow B$ und $g:B\rightarrow C$ Funktionen, dann ist die \textbf{Relation} $f\circ g$ eine Funktion von $A\rightarrow C$.\\
 Diese Funktion wird mit $gf$ bezeichnet und es gilt
 \[
 (gf)(a)=g(f(a))
 \]
+\end{defi}
+%
 %TODO
 \textbf{GRAFIK EINFUEGEN!!!}
-\paragraph{Definition (Umkehrfunktion):}Ist $f:A\rightarrow B$ eine bijektive Funktion, dann ist die inverse Relation $F^{-1}\subseteq B\times A$ eine Funktion, welche die Umkehrfunktion von $f$ genannt wird.
+\begin{defi}[Umkehrfunktion]
+Ist $f:A\rightarrow B$ eine bijektive Funktion, dann ist die inverse Relation $F^{-1}\subseteq B\times A$ eine Funktion, welche die Umkehrfunktion von $f$ genannt wird.
+\end{defi}
 %TODO
 % Grafik: Wann ist eine inverse Relation eine Funktion
 \textbf{GRAFIK EINFUEGEN!!!}

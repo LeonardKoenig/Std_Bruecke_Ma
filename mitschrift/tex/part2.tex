@@ -58,7 +58,9 @@ M=\{x\in U | P(x)\}
 \[
 \text{Multimenge }\{1,5,3,3,3,1\} \neq \text{Multimenge }\{1,5,3,8\}
 \]
-\paragraph{Definition:}Eine Menge $A$ ist die Untermenge/Teilmenge von der Menge $B$, wenn $a\in A\rightarrow a\in B$ (auch $A\subseteq B$).\\
+\begin{defi}[Teilmenge]
+Eine Menge $A$ ist die Untermenge/Teilmenge von der Menge $B$, wenn $a\in A\rightarrow a\in B$ (auch $A\subseteq B$).
+\end{defi}
 
 Beobachtung:
 \begin{itemize}
@@ -101,13 +103,15 @@ Zusammenhang Menge - Logik:
 \textbf{TABELLE EINFUEGEN!!!}
 
 \subsubsection{Indexmengen}
-\paragraph{Definition}Ist $I$ eine Menge und ist für jedes $i\in I$ eine Menge $A$ (in einem Universum U) gegeben, dann bezeichnet man
+\begin{defi}[Mengenfamilie und Indexmenge]
+Ist $I$ eine Menge und ist für jedes $i\in I$ eine Menge $A$ (in einem Universum U) gegeben, dann bezeichnet man
 $\mathcal{A}=\{A_i|i\in I\}$ als eine \textbf{Mengenfamilie} der \textbf{Indexmenge} $I$.\\
 Die Vereinigung und der Durchschnitt der Mengenfamilie $\mathcal{A}$ sind wie folgt definiert:
 \begin{align*}
 \bigcup_{i\in I} A_i = \{x\in U | \exists_{x\in I}: x\in A_i\}=\mathcal{A} \\
 \bigcap_{i\in I} A_i = \{x\in U | \forall_{x\in U}: x\in A_i\} =\emptyset
 \end{align*}
+\end{defi}
 
 \paragraph{Beispiel:} $U=\mathbb{R}^2$, $I=\mathbb{N}^+$, $n\in\mathbb{N}$, $A_n$ Punkte in der Kreisscheibe mit Radius $n$ und dem Mittelpunkt $M(0,n)$
 \begin{align*}
@@ -124,7 +128,10 @@ Die Vereinigung und der Durchschnitt der Mengenfamilie $\mathcal{A}$ sind wie fo
 \item $\bigcup_{n\in\mathbb{N}}A_i=A$
 \item $\bigcap_{n\in\mathbb{N}}A_i=\emptyset \xLeftrightarrow{\text{bzw.}} \forall_{i,j\in I,i\neq j}:A_i\cap A_j=\emptyset$
 \end{enumerate}
-\paragraph{Definition (Potenzmenge):}Für jede Menge $M$ wird die Menge aller Untermengen von $M$ als Potenzmenge $\mathcal{P(M)}$ bezeichnet.\\
+
+\begin{defi}[Potenzmenge]
+Für jede Menge $M$ wird die Menge aller Untermengen von $M$ als Potenzmenge $\mathcal{P(M)}$ bezeichnet.
+\end{defi}
 
 Beispiele:
 \begin{enumerate}
@@ -142,25 +149,31 @@ Anzahl der Elemente: $2^2=4$
 \paragraph{Satz:}Die Potenzmenge einer endlichen Menge mit $n$ Elementen hat selbst $2^n$ Elemente.
 
 \subsection{Relationen}
-\paragraph{Definition (geordnetes Paar):}Ein geordnetes Paar $(a,b)$ von zwei Objekten $a$ und $b$ ist ein Konstrukt mit folgender Eigenschaft:
+\begin{defi}[geordnetes Paar]
+Ein geordnetes Paar $(a,b)$ von zwei Objekten $a$ und $b$ ist ein Konstrukt mit folgender Eigenschaft:
 \[
 (a,b) = (c,d) \xLeftrightarrow{\text{Def.}} a=c \land b=d
 \]
-\paragraph{Definition (kartesisches Produkt):}Das kartesische Produkt $A\times B$ von zwei Mengen $A$ und $B$ ist die Menge aller geordneten Paare $(a,b)$ mit $a\in A$ und $b\in B$, dh.
+\end{defi}
+\begin{defi}[kartesisches Produkt]
+Das kartesische Produkt $A\times B$ von zwei Mengen $A$ und $B$ ist die Menge aller geordneten Paare $(a,b)$ mit $a\in A$ und $b\in B$, dh.
 \[
 A\times B = \{(a,b) | a\in A \land b\in B\}
 \]
-
+\end{defi}
+%
 \paragraph{Beispiel:}$\{1,2\}\times \{2,3,4\}$
 \[
 \underbrace{ \{1,2\} }_{n\text{ Elemente}} \times \underbrace{ \{2,3,4\} }_{m\text{ Elemente}} = \underbrace{ \{ (1,2), (1,3), (1,4), (2,2), (2,3), (2,4) \} }_{n\cdot m\text{ Elemente}}
 \]
 
-\paragraph{Definition (Relation):}Eine Relation $R$ zwischen zwei Mengen $A$ und $B$ ist Teilmenge von $A\times B$.\\
+\begin{defi}[Relation]
+Eine Relation $R$ zwischen zwei Mengen $A$ und $B$ ist Teilmenge von $A\times B$.\\
 Die Tatsache $(a,b)\in R$ kann auch durch $a\,R\,b$ ausgedrückt werden; gesprochen als \glqq a steht in Relation zu b\grqq .\\
 Eine Teilmenge von $A\times A$ wird \glqq Relation auf/über $A$\grqq\ genannt.
-
-Beispiele:
+\end{defi}
+%
+\paragraph{Beispiele:}
 \begin{itemize}
 \item $\emptyset \subseteq A\times B$ (leere Relation)
 \item $A\times B \subseteq A\times B$ (Allrelation)
@@ -234,8 +247,10 @@ $R\subseteq A\times A$ nennt man
 \end{itemize}
 
 \subsection{Äquivalenzrelationen}
-\paragraph{Definition:} $R\subset A\times A$ ist eine Äquivalenzrelation, wenn sie reflexiv, symmetrisch und transitiv ist.
-
+\begin{defi}[Äquivalenzrelation]
+$R\subset A\times A$ ist eine Äquivalenzrelation, wenn sie reflexiv, symmetrisch und transitiv ist.
+\end{defi}
+%
 \paragraph{Bsp.:}
 \begin{itemize}
 \item $A=\mathbb{N}$, $R\subset\mathbb{N}\times\mathbb{N}$ definiert durch
@@ -247,13 +262,15 @@ a\,R\,b \xLeftrightarrow{\text{Def.}} a\bmod 5
 \item Kongruenz von Dreiecken
 \end{itemize}
 
-\paragraph{Definition (Äquivalenzklassen):}$R$ ist \"Aquivalenzrelation \"uber eine Menge $A$, $a\in A$.\\
+\begin{defi}[Äquivalenzklassen]
+$R$ ist \"Aquivalenzrelation \"uber eine Menge $A$, $a\in A$.\\
 Die \"Aquivalenzklasse von a ist die Menge aller Elemente von $A$, die zu $a$ in Relation stehen:
 \[
 [a]_{R} =_{Def.} \{x \in A | x\,R\,a\}
 \]
-
-Beispiel:\\
+\end{defi}
+%
+\paragraph{Beispiel:}
 Relation $\equiv$ : mod $5$, $A = \mathbb{N}$ $a=17$
 \begin{align*}
 &[17]_{\text{mod }5} = \{2,7,12,17,22,...\} \\
@@ -340,7 +357,8 @@ Fallunterscheidung:
 \end{enumerate}
 
 \subsection{Ordnungsrelationen}
-\paragraph{Definition:}Eine (partielle) Ordnungsrelation ist eine Relation $R$ über einer Grundmenge $A$, die $3$ Eigenschaften hat:
+\begin{defi}[Ordnungsrelation]
+Eine (partielle) Ordnungsrelation ist eine Relation $R$ über einer Grundmenge $A$, die $3$ Eigenschaften hat:
 \begin{enumerate}
 \item reflexiv,
 \item transitiv und
@@ -349,6 +367,7 @@ Fallunterscheidung:
 $(A,R)$ wird auch POSet (Partially Ordered Set) genannt.\\
 Ist $R$ \emph{partielle} Ordnungsrelation über $A$ und $a,b \in A$ zwei Elemente von $A$, dann nennt man $a$ und $b$ vergleichbar, wenn $a\, R\, b$ oder $b\, R\, a$.\\
 $R$ ist \emph{total}, wenn zwei \emph{beliebige} $a,b\in A$ vergleichbar sind.
+\end{defi}
 
 \paragraph{Beispiele:}
 \begin{itemize}
@@ -364,8 +383,10 @@ Beispiel: $\leq$-Relation über $\{1,2,3,4\}$ als gerichteter Graph
 %TODO
 % Grafik einfuegen
 
-\paragraph{Definition:} Eine Relation $S$ über $A$ ist eine strenge (strikte) Ordnungsrelation, wenn sie transitiv und asymmetrisch ist.
-
+\begin{defi}[strikte Ordnungsrelation]
+Eine Relation $S$ über $A$ ist eine strenge (strikte) Ordnungsrelation, wenn sie transitiv und asymmetrisch ist.
+\end{defi}
+%
 \paragraph{Beispiele:}$<,>,\subseteq$, \glqq echter Teiler\grqq , \glqq echte Inklusion\grqq
 \ \\
 $R$ Ordnungsrelation\\
