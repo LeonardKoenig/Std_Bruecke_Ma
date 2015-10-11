@@ -4,12 +4,26 @@
 \usepackage{amsmath}
 \usepackage{amsfonts}
 \usepackage{amssymb}
+\usepackage{mathtools}
 \usepackage[left=2cm,right=2cm,top=2cm,bottom=2cm]{geometry}
 \author{Leonard K\"oenig}
 \title{d4}
 \begin{document}
 \section{Äquivalenzrelationen}
-Def.: $R$ ist \"Aquivalenzrelation \"uber eine Menge $A$, $a\in A$.\\
+\paragraph{Definition:} $R\subset A\times A$ ist eine Äquivalenzrelation, wenn sie reflexiv, symmetrisch und transitiv ist.
+
+\paragraph{Bsp.:}
+\begin{itemize}
+\item $A=\mathbb{N}$, $R\subset\mathbb{N}\times\mathbb{N}$ definiert durch
+\[
+a\,R\,b \xLeftrightarrow{\text{Def.}} a\bmod 5
+\]
+(dh. gleicher Rest beim Teilen)
+\item Die logische Äquivalenz ist eine Äquivalenzrelation auf der Menge der Boole'schen Terme/Formeln.
+\item Kongruenz von Dreiecken
+\end{itemize}
+
+\paragraph{Definition (Äquivalenzklassen):}$R$ ist \"Aquivalenzrelation \"uber eine Menge $A$, $a\in A$.\\
 Die \"Aquivalenzklasse von a ist die Menge aller Elemente von $A$, die zu $a$ in Relation stehen:
 \[
 [a]_{R} =_{Def.} \{x \in A | x\,R\,a\}
@@ -150,4 +164,106 @@ Hier ist $A$ der \emph{Definitionsbereich} und $B$ der \emph{Wertebereich}.
 \[
 \text{Urbild von $N$ unter $f$:} \quad \mathbb{N}\subseteq B \quad f^{-1}(A)
 \]
+\subsection{Eigenschaften von Funktionen}
+Eine Funktion $f$ mit Definitionsbereich $A$ und Wertebereich $B$ ($f:A\rightarrow B$) ist
+\begin{itemize}
+\item \textbf{injektiv}, wenn verschiedenen Argumenten immer verschiedene Werte zugeordnet werden, dh.
+\[
+\forall_{a,a'\in A}: a\neq a' \Rightarrow f(a)\neq f(a')
+\]
+\item \textbf{surjektiv}, wenn jedes Element aus $B$ Bild eines $a$ aus $A$ ist, dh.
+\[
+\forall_{b\in B}\exists_{a\in A}: f(a)=b \xLeftrightarrow{\text{bzw.}} f(A)=f(B) \xLeftrightarrow{\text{bzw.}} \{b\in B | \exists_{a\in A}: f(a)=b\}=B
+\]
+\item \textbf{bijektiv}, wenn $f$ injektiv und surjektiv ist
+\end{itemize}
+
+\paragraph{Beispiel:}$f(x)=x^2$\\
+$f$ als Funktion $f:\mathbb{R}\rightarrow\mathbb{R}$ ist
+\begin{itemize}
+\item[-] nicht injektiv (da bspw. $f(2)=f(-2)$)
+\item[-] nicht surjektiv (da $-1\notin f(B)$)
+\item[$\Rightarrow$] nicht bijektiv
+\end{itemize}
+$f$ als Funktion $f:\mathbb{R}\rightarrow\mathbb{R}^{\geq 0}$ ist
+\begin{itemize}
+\item[-] nicht injektiv (da bspw. $f(2)=f(-2)$)
+\item[+] surjektiv
+\item[$\Rightarrow$] nicht bijektiv
+\end{itemize}
+$f$ als Funktion $f:\mathbb{R}^{\geq 0}\rightarrow\mathbb{R}^{\geq 0}$ ist
+\begin{itemize}
+\item[+] injektiv
+\item[+] surjektiv
+\item[$\Rightarrow$] bijektiv $\Rightarrow f^{*}(f(x))=x$
+\end{itemize}
+
+\subsection{Operationen auf Funktionen}
+\paragraph{Definition (Komposition von Funktionen):}Sind $f:A\rightarrow B$ und $g:B\rightarrow C$ Funktionen, dann ist die \textbf{Relation} $f\circ g$ eine Funktion von $A\rightarrow C$.\\
+Diese Funktion wird mit $gf$ bezeichnet und es gilt
+\[
+(gf)(a)=g(f(a))
+\]
+%TODO
+\textbf{GRAFIK EINFUEGEN!!!}
+\paragraph{Definition (Umkehrfunktion):}Ist $f:A\rightarrow B$ eine bijektive Funktion, dann ist die inverse Relation $F^{-1}\subseteq B\times A$ eine Funktion, welche die Umkehrfunktion von $f$ genannt wird.
+%TODO
+% Grafik: Wann ist eine inverse Relation eine Funktion
+\textbf{GRAFIK EINFUEGEN!!!}
+
+\paragraph{Satz:}Für Funktionen $f:A\rightarrow B$ und $g:\rightarrow C$ gilt:
+\begin{itemize}
+\item $(f'f)(a)=a$
+\item $(f'f)=(ff')=Id_A$
+\end{itemize}
+\paragraph{andere inverse Relationen als Funktionen}
+\begin{itemize}
+\item Ist $f$ injektiv, dann gibt es eine Funktion $h:B\rightarrow A$, sodass $(hf)=Id_A$\\
+Dies ist im strengeren Sinne nicht unbedingt eine Umkehrfunktion, da $f$ nicht unbedingt bijektiv ist. Dadurch gibt es Elemente aus $B$ die für kein $a\in A$ mit $f(A)$ Bild sind.
+$h$ definieren wir so, dass wir solche Elemente beliebig auf $A$ Abbilden, sodass komplett $B$ als Definitionsbereich genutzt werden kann, sprich $h(B)\in A$.
+\item Ist $f$ surjektiv, dann gibt es eine Funktion $h:B\rightarrow A$, sodass $(fh)=Id_B$\\
+Auch in diesem Fall ist $h$ nicht Umkehrfunktion von $f$. Es kann nämlich sein, dass es eine Menge $X\subseteq A$ (mit mehr als einem Element) gibt, sodass $F(X)=b$, mit $b\in B$.
+Deshalb definieren wir unser $h$ so, dass nur ein Element $x$ Bild von einem solchen $b$ ist: $h(b)=x$ mit $x\in X$.
+\item Ist $f$ injektiv und $g$ injektiv, dann ist auch $gf$ injektiv.
+\item Ist $f$ und $g$ surjektiv, dann ist auch $gf$ surjektiv.
+\item Ist $f$ und $g$ bijektiv, dann ist auch $gf$ bijektiv und
+\[
+(gf)^{-1}=f^{-1}g^{-1}
+\]
+\end{itemize}
+\subsection{Äquivalenzrelationen}
+\paragraph{Satz:}Sei $f:A\rightarrow B$ eine Funktion, dann ist die Relation $\sim_f\subseteq A\times A$ mit $a\sim_f a' \xLeftrightarrow{Def.} f(a)=f(a')$ eine Äquivalenzrelation über $A$.
+\paragraph{Beispiel:}$f:\mathbb{N}\rightarrow\mathbb{N}$\\
+$f(n)=(n \bmod 5)$: $\sim_f$ ist die Relation $\equiv \bmod 5$
+
+\section{Exponential- und Logarithmusfunktionen}
+\subsection{Die Eulersche Zahl $e$}
+\begin{itemize}
+\item $\lim\limits_{n \to \infty}\left(n+\frac{1}{n}\right)^n=e=2.718\ldots$
+\item $\sum\limits_{k=0}^{\infty}\left(\frac{1}{k!}\right)=e=1+1+\frac{1}{2}+\frac{1}{3}+\frac{1}{24}+\ldots$
+\item $\lim\limits_{n\to\infty}\left(1+\frac{x}{n}\right)^n=e^n$ für alle $x\in\mathbb{R}$
+\item $\lim\limits_{n\to\infty}\left(1+\frac{x+y}{n}\right)^n=\lim\limits_{n\to\infty}\left(1+\frac{x}{n}\right)^n \cdot \lim\limits_{n\to\infty}\left(1+\frac{y}{n}\right)^n$
+\end{itemize}
+$exp: \mathbb{R}\to	\mathbb{R}^+$ bijektiv:
+$e^x=y \Leftrightarrow \ln(y)=x$\\
+%TODO
+\textbf{GRAPH EINFUEGEN!!!}
+
+\subsection{Eigenschaften}
+Für beliebige Basen $a>0$:
+\begin{itemize}
+\item $a^x:\mathbb{R}\to\mathbb{R}^+$ bijektiv
+\item Umkehrfunktion zu $a^x$ ist $\log_a:\mathbb{R}^+\to\mathbb{R}$
+\item $\log(x)=\log_2(x)$ (auch manchmal $\text{ld}(x)$ \glq dualis\grq )
+\item $\lg(x)=\log_{10}(x)$
+\item $\ln(x)=\log_e(x)$ (\glq naturalis\grq )
+\end{itemize}
+Regeln:
+\begin{itemize}
+\item $\log_a(s\cdot t) = \log_a(s) + \log_a(t)$
+\item $\log_a\left(\frac{1}{s}\right)=-\log_a(s)$
+\end{itemize}
+
+\section{Ganzzahlige Division}
+\paragraph{Satz:}Für beliebige $a\in\mathbb{Z}$ und $d\in\mathbb{Z}^+$ gibt es eindeutige Werte $q,r\in\mathbb{Z}$ mit $a=qd+r$ mit $0\leq r<d$
 \end{document}
