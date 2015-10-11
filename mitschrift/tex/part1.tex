@@ -1,27 +1,13 @@
-%\documentclass[10pt,a4paper]{article}
-%\usepackage[utf8]{inputenc}
-%\usepackage[ngerman]{babel}
-%\usepackage{amsmath}
-%\usepackage{amsfonts}
-%\usepackage{amssymb}
-%\usepackage{amsthm} % theorems
-%\usepackage{cancel} % strikethrough
-%\usepackage{tabto} % tabbing
-%%\usepackage[left=2cm,right=2cm,top=2cm,bottom=2cm]{geometry}
-%\author{Leonard König}
-%\title{Mathe-Bruecke_d1}
-%\date{2015-09-29}
-%\begin{document}
 \section{Logik}
 \subsection{Aussagenlogik}
-Aussage: (formalsprachliches) Gebilde (Satz) mit der Eigenschaft entweder wahr oder falsch zu sein.
+\paragraph{Aussage:}(formalsprachliches) Gebilde (Satz) mit der Eigenschaft entweder wahr oder falsch zu sein.
 %
 \begin{itemize}
 \item Zweiwertigkeitsprinzip
-\item Extentionalitätsprinizip (Wahrheitswert einer zusammengesetzten Aussage ergibt sich aus denen der einzelnen Aussagen)
+\item Extensionalitätsprinizip (Wahrheitswert einer zusammengesetzten Aussage ergibt sich aus denen der einzelnen Aussagen)
 \end{itemize}
 %
-\paragraph{Konkatenieren von Aussagen:}
+\subsubsection{Konkatenieren von Aussagen:}
 \begin{itemize}
 \item Negation (\( \neg \)) \tab{(unär)}
 \item Konjunktion (\( \land \)) \tab{(binär)}
@@ -30,10 +16,6 @@ Aussage: (formalsprachliches) Gebilde (Satz) mit der Eigenschaft entweder wahr o
 \item Äquivalenz (\( \leftrightarrow \)) \tab{(binär)}
 \item ( Antivalenz (\( \oplus \)) ) \tab{(binär)}
 \end{itemize}
-%
-\paragraph{Beispiele und Anwendung}
-%
-Werte für eine Aussage sind wahr (\( w,t,1 \)) und falsch (\( f,0 \)).
 %
 \paragraph{Beispiele für Aussagen}
 \begin{itemize}
@@ -44,8 +26,8 @@ Werte für eine Aussage sind wahr (\( w,t,1 \)) und falsch (\( f,0 \)).
 \item \glqq $7$ ist prim $\lor$ $7$ ist ungerade\grqq\tab{$1$}
 \item \glqq $7$ ist prim $\oplus$ $7$ ist ungerade\grqq\tab{$0$}
 \item \glqq $\sqrt{2}$ ist rational\grqq\tab{$0$}
-\item \glqq Jede gerade Zahl $n\geq 4$\\
-kann als Summe von zwei Primzahlen\\
+\item \glqq Jede gerade Zahl $n\geq 4$ kann als\\
+Summe zweier Primzahlen\\
 dargestellt werden\grqq\tab{? (Goldbachsche Vermutung)}
 \end{itemize}
 %
@@ -59,13 +41,17 @@ Es muss also \emph{nicht} klar sein, ob die Aussage wahr oder falsch ist!
 %
 \textbf{WAHRHEITSTAFEL EINFUEGEN}
 %TODO
-\subsection{Semantik}
+\subsubsection{Semantik}
 \begin{itemize}
 \item \( x + - y \)\tab{syntaktisch inkorrekt}
 \item \( \frac{x}{y} \)\tab{syntaktisch korrekt \& semantisch korrekt für \( y \neq 0 \)}
 \end{itemize}
+Analogie zu Programmen:
+\begin{itemize}
+\item \textbf{syntaktisch korrekt} heißt, dass Lexer und Parser fehlerfrei den Term / die Formel fehlerfrei analysieren können, sprich der Code ist Regelkonform
+\item \textbf{semantisch korrekt} heißt, dass das richtige Ergebnis geliefert wird (auch logisch korrekt)
+\end{itemize}
 %
-\paragraph{Definition}
 \newtheorem{defi}{Definition}
 \begin{defi}[Term der Aussagenlogik]
 Gegeben Variablenmenge $V = \{ x,y,z,x_1,x_2, ...\} $
@@ -79,7 +65,7 @@ Terme der Aussagenlogik\tab{$\mid$ neuer Rang: Maximum der beiden \glq Subränge
 \end{enumerate}
 \end{defi}
 %
-Anmerkungen
+\paragraph{Anmerkungen:}
 \begin{itemize}
 \item Wenn wir nur $\neg$, $\land$, $\lor$ verwenden, erzeugen wir die sogenannten \glq Booleschen Terme\grq
 \item In der Aussagenlogik sind \glq Term\grq\ und \glq Formel\grq\ synonym.
@@ -95,18 +81,11 @@ $(\neg)$, $(\land,\lor)$, $(\rightarrow, \leftrightarrow)$
 \end{itemize}
 \item Auch bei Assoziativität \emph{ändern} sich die Formeln, sind aber äquivalent!
 \end{itemize}
-\paragraph{Semantik der Aussagenlogik}
-%
-Semantik ist die Interpretation der Formeln:
+\paragraph{Definition (Semantik):}Semantik ist die Interpretation der Formeln
 \begin{itemize}
 \item Belegung mit Wahrheitswerten
 \item Auswertung der Formel\\
 Boolesche Funktion: Auswertung unter allen möglichen Belegungen
-\end{itemize}
-Analogie zu Programmen:
-\begin{itemize}
-\item \textbf{syntaktisch korrekt} heißt, dass Lexer und Parser fehlerfrei den Term / die Formel fehlerfrei analysieren können, sprich der Code ist Regelkonform
-\item \textbf{semantisch korrekt} heißt, dass das richtige Ergebnis geliefert wird (auch logisch korrekt)
 \end{itemize}
 %
 \paragraph{Wahrheitstafel am Beispiel $t = (\neg y \land \neg(x \land) ) \lor z$:}
@@ -125,7 +104,7 @@ Bsp.:
 \ \\ \textbf{WAHRHEITSTAFEL EINFUEGEN}
 %TODO
 %
-\paragraph{Regeln der Logik}
+\subsubsection{Regeln der Logik}
 \paragraph{Satz: Für beliebige Formeln $s,t,r$ gilt:}
 \begin{align*}
 \text{Assoziativität}&\begin{cases}
@@ -334,7 +313,7 @@ m|n \Rightarrow k\nmid m \lor k|n
 \end{itemize}
 \end{proof}
 
-\subsection{Induktion}
+\subsection{Beweis durch Induktion}
 \subsubsection{Einschub: Peano-Axiome der natürlichen Zahlen}
 \begin{itemize}
 \item $0\in\mathbb{N}$
